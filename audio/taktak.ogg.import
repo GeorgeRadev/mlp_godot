@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/taktak.ogg-f363c6198cabac36ea99ea73ff8b57be.oggstr"
+
+[deps]
+
+source_file="res://audio/taktak.ogg"
+dest_files=[ "res://.import/taktak.ogg-f363c6198cabac36ea99ea73ff8b57be.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

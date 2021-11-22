@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="BoxShape" id=1]
+
+[node name="TheBOX" type="StaticBody"]
+
+[node name="down" type="CollisionShape" parent="."]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, -4, 0 )
+shape = SubResource( 1 )
+
+[node name="up" type="CollisionShape" parent="."]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 7, 0 )
+shape = SubResource( 1 )
+
+[node name="left" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 7, 0, 0, 0, 10, 10, 1, 0 )
+shape = SubResource( 1 )
+
+[node name="right" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 7, 0, 0, 0, 10, -10, 1, 0 )
+shape = SubResource( 1 )
+
+[node name="front" type="CollisionShape" parent="."]
+transform = Transform( 10, 0, 0, 0, 7, 0, 0, 0, 1, 0, 1, -9 )
+shape = SubResource( 1 )
+
+[node name="back" type="CollisionShape" parent="."]
+transform = Transform( 10, 0, 0, 0, 7, 0, 0, 0, 1, 0, 1, 9 )
+shape = SubResource( 1 )

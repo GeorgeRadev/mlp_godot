@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Rarity.ogg-f7766be5b273146379626e192cd8d86c.oggstr"
+
+[deps]
+
+source_file="res://audio/Rarity.ogg"
+dest_files=[ "res://.import/Rarity.ogg-f7766be5b273146379626e192cd8d86c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/RainbowDash.ogg-2de4da68d462232cdef9a2bc5b797422.oggstr"
+
+[deps]
+
+source_file="res://audio/RainbowDash.ogg"
+dest_files=[ "res://.import/RainbowDash.ogg-2de4da68d462232cdef9a2bc5b797422.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

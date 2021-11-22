@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/PonyPower.ogg-716576cc7e648009d356c5db81e265cc.oggstr"
+
+[deps]
+
+source_file="res://audio/PonyPower.ogg"
+dest_files=[ "res://.import/PonyPower.ogg-716576cc7e648009d356c5db81e265cc.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

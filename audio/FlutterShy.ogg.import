@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/FlutterShy.ogg-d80ab8855e328384eab28008ece6f2ab.oggstr"
+
+[deps]
+
+source_file="res://audio/FlutterShy.ogg"
+dest_files=[ "res://.import/FlutterShy.ogg-d80ab8855e328384eab28008ece6f2ab.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

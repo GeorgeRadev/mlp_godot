@@ -1,0 +1,95 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://levels/spikes.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/cristal.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/blockSimple.tscn" type="PackedScene" id=3]
+[ext_resource path="res://levels/bridge.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Water.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.403922, 0.854902, 0.388235, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=3]
+points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
+
+[node name="level" type="Spatial"]
+
+[node name="Ground" type="MeshInstance" parent="."]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, -1.75804, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="Ground"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="wall" type="MeshInstance" parent="."]
+transform = Transform( -3.27837e-07, -1.03028, 0, 7.50004, -4.50349e-08, 0, 0, 0, 10, 11.1119, 4.04159, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="wall"]
+
+[node name="CollisionShape" type="CollisionShape" parent="wall/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="wall2" type="MeshInstance" parent="."]
+transform = Transform( -3.27837e-07, -1.03028, 0, 7.50004, -4.50349e-08, 0, 0, 0, 10, -10.5628, 4.04159, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="wall2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="wall2/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="Spike" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5278, 1.14059, 6.71109 )
+
+[node name="Spike2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25715, 0.887325, 6.37489 )
+
+[node name="Cristal" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 6.65649, 1.09677, 6.11089 )
+
+[node name="Cristal2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, -5.74016, 0.988242, 6.36517 )
+
+[node name="Spike3" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 3.5278, 1.14059, -5.21981 )
+
+[node name="Spike4" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -2.25715, 1.00224, -5.55601 )
+
+[node name="Cristal3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 0.956585, 0.291454, 0, -0.291454, 0.956585, 6.65649, 0.79352, -5.82001 )
+
+[node name="Cristal4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 0.933887, 0.357569, 0, -0.357569, 0.933886, -5.74016, 0.755073, -5.56573 )
+
+[node name="Block" parent="." instance=ExtResource( 3 )]
+transform = Transform( 21.059, 0, 0, 0, 1.361, 2.59808, 0, -2.35732, 1.5, 0, -0.66451, 6.10442 )
+
+[node name="Block2" parent="." instance=ExtResource( 3 )]
+transform = Transform( -21.059, 3.55946e-07, -2.26494e-07, 0, 1.361, 2.59808, 3.17982e-06, 2.35732, -1.5, 0, -0.657195, -4.86 )
+
+[node name="Block3" parent="." instance=ExtResource( 3 )]
+transform = Transform( 26, 0, 0, 0, 1, 0, 0, 0, 5.42566, 0, -0.5, 7.3414 )
+
+[node name="Block4" parent="." instance=ExtResource( 3 )]
+transform = Transform( 20.3969, 0, 0, 0, 1, 0, 0, 0, 4.41241, 0, 0, -7.87189 )
+
+[node name="Water" parent="." instance=ExtResource( 5 )]
+transform = Transform( 10.0582, 0, 0, 0, 3, 0, 0, 0, 9.90455, 0, 0.0293093, 0 )
+
+[node name="Scene Root" parent="." instance=ExtResource( 4 )]
+transform = Transform( 2.88691, 0, 0, 0, 2.80854, 0.668103, 0, -0.668103, 2.80854, 0, 0.50157, -2.75583 )
+
+[node name="Scene Root2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 2.88691, 0, 0, 0, 2.80854, -0.668103, 0, 0.668103, 2.80854, 0, 0.50157, 4.00768 )
+
+[node name="Scene Root3" parent="." instance=ExtResource( 4 )]
+transform = Transform( 2.88691, 0, 0, 0, 2.88691, 0, 0, 0, 1.74634, 0, -0.419246, 0.2552 )

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.556794, 0.0371876, 0.69299 )
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.180392, 0.854902, 0.223529, 1 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.654902, 0.654902, 0.352941, 1 )
+
+[node name="blockSlope" type="StaticBody"]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0.501774, 0 )
+shape = SubResource( 1 )
+
+[node name="grass" type="MeshInstance" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.0353553, 0.53033, 0, -0.0353553, 0.53033, 0, 0.434895, 0 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="ground" type="MeshInstance" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.0353553, 0.53033, 0, -0.0353553, 0.53033, 0, 0.386093, 0.0549597 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 4 )

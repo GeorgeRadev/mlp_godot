@@ -1,0 +1,111 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://levels/house_suger.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/heart.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/fence.tscn" type="PackedScene" id=3]
+[ext_resource path="res://levels/cristal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://levels/trampoline.tscn" type="PackedScene" id=5]
+[ext_resource path="res://levels/spikes.tscn" type="PackedScene" id=6]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.403922, 0.854902, 0.388235, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=3]
+points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
+
+[node name="level" type="Spatial"]
+
+[node name="Ground" type="MeshInstance" parent="."]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, -1, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="Ground"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="wall" type="MeshInstance" parent="."]
+transform = Transform( -3.27837e-07, -1.03028, 0, 7.50004, -4.50349e-08, 0, 0, 0, 10, 11.1119, 4.04159, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="wall"]
+
+[node name="CollisionShape" type="CollisionShape" parent="wall/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="wall2" type="MeshInstance" parent="."]
+transform = Transform( -3.27837e-07, -1.03028, 0, 7.50004, -4.50349e-08, 0, 0, 0, 10, -10.5628, 4.04159, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="wall2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="wall2/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="house2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, 0.34202, -6.9216, -0.075695, 3.08982 )
+
+[node name="heart" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.3, 8 )
+
+[node name="heart2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.3, 8 )
+
+[node name="heart3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.3, 8 )
+
+[node name="heart4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.3, 8 )
+
+[node name="Fence" type="Spatial" parent="."]
+
+[node name="Scene Root5" parent="Fence" instance=ExtResource( 3 )]
+transform = Transform( 0.331609, 0, 0.943417, 0, 1, 0, -0.943417, 0, 0.331609, 2.76177, 0, 7.90987 )
+
+[node name="Scene Root" parent="Fence" instance=ExtResource( 3 )]
+transform = Transform( -0.063221, 0, -0.998, 0, 1, 0, 0.998, 0, -0.063221, -2.75647, 0, 8.68221 )
+
+[node name="Scene Root8" parent="Fence" instance=ExtResource( 3 )]
+transform = Transform( 0.981166, 0, 0.193165, 0, 1, 0, -0.193165, 0, 0.981166, 4.13132, 0, 6.36843 )
+
+[node name="Scene Root9" parent="Fence" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.31869, 0, 6.3095 )
+
+[node name="Scene Root10" parent="Fence" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4434, 0, 6.3095 )
+
+[node name="Scene Root11" parent="Fence" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.56843, 0, 6.3095 )
+
+[node name="Scene Root12" parent="Fence" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.73512, 0, 6.3095 )
+
+[node name="Scene Root2" parent="Fence" instance=ExtResource( 3 )]
+transform = Transform( 0.624922, 0, -0.780687, 0, 1, 0, 0.780687, 0, 0.624922, -3.12749, 0, 7.69479 )
+
+[node name="Scene Root6" parent="Fence" instance=ExtResource( 3 )]
+transform = Transform( 0.595682, 0, 0.803221, 0, 1, 0, -0.803221, 0, 0.595682, 3.27103, 0, 6.97881 )
+
+[node name="Scene Root3" parent="Fence" instance=ExtResource( 3 )]
+transform = Transform( 0.827779, 0, -0.561054, 0, 1, 0, 0.561054, 0, 0.827779, -3.89806, 0, 6.96509 )
+
+[node name="Scene Root4" parent="Fence" instance=ExtResource( 3 )]
+transform = Transform( 0.957699, 0, -0.287771, 0, 1, 0, 0.287771, 0, 0.957699, -4.8443, 0, 6.47787 )
+
+[node name="Scene Root7" parent="Fence" instance=ExtResource( 3 )]
+transform = Transform( 0.0342415, 0, 0.999414, 0, 1, 0, -0.999414, 0, 0.0342415, 2.53174, 0, 8.94903 )
+
+[node name="Cristal" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75464, 0, 4.75176 )
+
+[node name="Trampoline" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01141, 0, 6.09704 )
+velocity = Vector3( 16, 16, 0 )
+
+[node name="Spike" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.614, 0, 2.74 )
