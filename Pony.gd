@@ -19,6 +19,7 @@ var ponyNodes: Dictionary = {}
 var hasWings: bool = false
 var hasHorn: bool = false
 var old_on_floor: bool = false
+var magicColor:int = 0
 
 enum STATE {
 	IDLE, # on ground
@@ -39,7 +40,8 @@ onready var audio_jump:AudioStreamPlayer = $jump
 var ponyNames: Array = []
 var delayPonyName:bool = true
 
-var apple = preload("res://levels/apple.tscn")
+var magic = preload("res://levels/magic.tscn")
+var splash = preload("res://levels/splash.tscn")
 
 func _process(_delta):
 	# selecting different pony
@@ -85,6 +87,11 @@ func _physics_process(delta):
 	# move player
 	velocity = move_and_slide(velocity, Vector3.UP)
 	
+	if !can_move:
+		playerState = STATE.IDLE
+		updateAnimation()
+		return
+	
 	var is_on_floor: bool = is_on_floor()
 	var moving: bool = abs(velocity.x) > 0.2 or abs(velocity.z) > 0.2
 	var push_pressed: bool = Input.is_action_just_pressed(key_prefix + "_A")	
@@ -102,10 +109,20 @@ func _physics_process(delta):
 			else:
 				playerState = STATE.IDLE
 		if push_pressed:
-			var a = apple.instance()
-			a.start($Position3D.global_transform)
-			get_parent().add_child(a)
-			$apple.play()
+			# if has horn or rainbawdash make rainbow
+			if hasHorn or ponyType == 5:
+				var a = splash.instance()
+				a.start($Position3D.global_transform)
+				get_parent().add_child(a)
+				$magic.play()
+			else:
+				var a = magic.instance()
+				var material = SpatialMaterial.new()
+				material.albedo_color = Color(magicColor)
+				a.get_child(0).set_material_override(material)
+				a.start($Position3D.global_transform)
+				get_parent().add_child(a)
+				$magic.play()
 		if push_hold: 
 			playerState = STATE.PUSH
 		if jump_pressed:
@@ -211,7 +228,7 @@ func _ready():
 	ponyTypes.append(funcref(self,"showTrixy"))
 	ponyTypes.append(funcref(self,"showRandom"))
 	
-	ponyAnimation.connect("animation_finished", self, "animation_finished")
+	var __ = ponyAnimation.connect("animation_finished", self, "animation_finished")
 	ponyAnimation.get_animation("idle").set_loop(true)
 	ponyAnimation.get_animation("walk").set_loop(true)
 	ponyAnimation.get_animation("run").set_loop(true)
@@ -268,7 +285,8 @@ func showBody(color:int, wings:bool, horn:bool):
 
 
 func showTwilightSparkle():
-	showBody(0xe3b1faff, true, true)
+	magicColor = 0xe3b1faff
+	showBody(magicColor, true, true)
 	apply_texture(ponyNodes['cutiemark'], "res://PonyCutieMarks/cutie_twilight.png")
 	apply_texture(ponyNodes['eyes'], "res://PonyEyes/eyes_pink.png")
 	ponyNodes['cutiemark'].visible = true
@@ -278,7 +296,8 @@ func showTwilightSparkle():
 	ponyNodes['eyelashesup1'].visible = true
 	
 func showPinkeyPie():
-	showBody(0xf4c4dcff, false, false)
+	magicColor = 0xf4c4dcff
+	showBody(magicColor, false, false)
 	apply_texture(ponyNodes['cutiemark'], "res://PonyCutieMarks/cutie_pinkie_pie.png")
 	apply_texture(ponyNodes['eyes'], "res://PonyEyes/eyes_blue.png")
 	ponyNodes['cutiemark'].visible = true
@@ -288,7 +307,8 @@ func showPinkeyPie():
 	ponyNodes['eyelashesdown1'].visible = true
 
 func showRainbowDash():
-	showBody(0x98e2ffff, true, false)
+	magicColor = 0x98e2ffff
+	showBody(magicColor, true, false)
 	apply_texture(ponyNodes['cutiemark'], "res://PonyCutieMarks/cutie_rainbow_dash.png")
 	apply_texture(ponyNodes['eyes'], "res://PonyEyes/eyes_pink.png")
 	ponyNodes['cutiemark'].visible = true
@@ -298,7 +318,8 @@ func showRainbowDash():
 	ponyNodes['eyelashesdown2'].visible = true
 
 func showAppleJack():
-	showBody(0xffc360ff, false, false)
+	magicColor = 0xffc360ff
+	showBody(magicColor, false, false)
 	apply_texture(ponyNodes['cutiemark'], "res://PonyCutieMarks/cutie_applejack.png")
 	apply_texture(ponyNodes['eyes'], "res://PonyEyes/eyes_green.png")
 	ponyNodes['cutiemark'].visible = true
@@ -309,7 +330,8 @@ func showAppleJack():
 	ponyNodes['eyelashesdown1'].visible = true
 
 func showFlutterShy():
-	showBody(0xfff4a3ff, true, false)
+	magicColor = 0xfff4a3ff
+	showBody(magicColor, true, false)
 	apply_texture(ponyNodes['cutiemark'], "res://PonyCutieMarks/cutie_fluttershy.png")
 	apply_texture(ponyNodes['eyes'], "res://PonyEyes/eyes_blue_light.png")
 	ponyNodes['cutiemark'].visible = true
@@ -320,7 +342,8 @@ func showFlutterShy():
 	ponyNodes['eyelashesdown2'].visible = true
 
 func showRarity():
-	showBody(0xecf0f4ff, false, true)
+	magicColor = 0xecf0f4ff
+	showBody(magicColor, false, true)
 	apply_texture(ponyNodes['cutiemark'], "res://PonyCutieMarks/cutie_rarity.png")
 	apply_texture(ponyNodes['eyes'], "res://PonyEyes/eyes_blue.png")
 	ponyNodes['cutiemark'].visible = true
@@ -333,7 +356,8 @@ func showRarity():
 	ponyNodes['eyelashesdown2'].visible = true
 
 func showSunsetShimmer():
-	showBody(0xf89f2bff, false, true)
+	magicColor = 0xf89f2bff
+	showBody(magicColor, false, true)
 	apply_texture(ponyNodes['cutiemark'], "res://PonyCutieMarks/cutie_sunset_shimmer.png")
 	apply_texture(ponyNodes['eyes'], "res://PonyEyes/eyes_pink.png")
 	ponyNodes['cutiemark'].visible = true
@@ -344,7 +368,8 @@ func showSunsetShimmer():
 	ponyNodes['eyelashesdown2'].visible = true
 
 func showTrixy():
-	showBody(0x55acf3ff, false, true)
+	magicColor = 0x55acf3ff
+	showBody(magicColor, false, true)
 	apply_texture(ponyNodes['cutiemark'], "res://PonyCutieMarks/cutie_trixie.png")
 	ponyNodes['cutiemark'].visible = true
 	ponyNodes['tcoin'].visible = true
@@ -359,6 +384,7 @@ func showTrixy():
 func showRandom():
 	ponyNodes['cutiemark'].visible = false
 	var color:int = Color.from_hsv(randf(), 0.30, 0.90, 1.0).to_rgba32()
+	magicColor = color
 	showBody(color, randi() % 2 == 0, randi() % 2 == 0)
 	var choice = str(1+(randi() % 3))
 	var hair = 'hair'+choice

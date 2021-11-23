@@ -23,7 +23,7 @@ directional_shadow_depth_range = 1
 directional_shadow_max_distance = 40.0
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 20.0
+wait_time = 6.0
 autostart = true
 
 [node name="changelink" type="AudioStreamPlayer" parent="."]

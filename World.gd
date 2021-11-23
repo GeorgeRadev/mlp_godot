@@ -1,6 +1,6 @@
 extends Spatial
 
-var PLAYERS = 1
+var PLAYERS = 2
 
 var players:Array = [null, null, null, null]
 var changelinks:Array = []
@@ -21,7 +21,8 @@ var start = preload("res://levels/start.tscn")
 var green0 = preload("res://levels/green0.tscn")
 var green1 = preload("res://levels/green1.tscn")
 var green2 = preload("res://levels/green2.tscn")
-var segments:Array = [green0, green1, green2]
+var green3 = preload("res://levels/green3.tscn")
+var segments:Array = [green0, green1, green2, green3]
 
 func _ready():
 	randomize()
@@ -44,7 +45,7 @@ func generateRandomLevel():
 		object.translate(Vector3.ZERO)
 		levelContainer.add_child(object)
 		levelElements.append(object)
-	var currentElementZ = int(theBOX.transform.origin.z) / 20
+	var currentElementZ = int((theBOX.transform.origin.z  - 0.48)/ 20)
 	# add level segments
 	while len(levelElements) < currentElementZ + 5:
 		generateRandomSegment(20*len(levelElements))
@@ -137,12 +138,18 @@ func _on_Timer_timeout():
 	addChangelink()
 
 
+var changelinkSpawnCount:int = 0
+
 func addChangelink():
 	var object = changelinkClass.instance()
-	add_child(object)
-	changelinks.append(object)
 	object.setParent(self)
 	object.translate(Vector3( 16 * (randf() -0.5), 3, theBOX.transform.origin.z + 6))
+	changelinkSpawnCount += 1
+	if changelinkSpawnCount >= 5:
+		changelinkSpawnCount = 0
+		object.scale = Vector3(2,2,2)
+	add_child(object)
+	changelinks.append(object)
 	$changelink.play()
 
 func hitChangelink():
