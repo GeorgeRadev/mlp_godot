@@ -10,3 +10,9 @@ Simple GODOT cooperative miltiplayer game in My Little Pony Theme
 ![screenshot](https://github.com/GeorgeRadev/mlp_godot/blob/main/mlp_screenshot.png?raw=true)
 
 - Happy changelinks catching
+
+
+## Resources
+
+3D resources are free downloadable ones from [sketchfab.com](https://sketchfab.com/) then simplified and rigged by me.  
+All Sounds are taken from [youtube.com](https://youtube.com/).  
