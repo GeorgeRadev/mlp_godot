@@ -9,7 +9,7 @@ onready var changelinkElements = $Changelink/Armature # armature . Skeleton
 onready var changelinkAnimation =  $Changelink/AnimationPlayer
 var changelinkNodes:Dictionary = {}
 var targets:Array = []
-var colapse:float = -1
+var colapseIt:float = -1
 
 
 enum STATE {
@@ -25,10 +25,10 @@ var changelinkState = STATE.IDLE
 
 func _physics_process(delta):
 	# colapse = die
-	if colapse > 0:
-		if colapse < 1:
-			colapse += delta
-			scale = (Vector3(1,1,1)/(1+4*colapse))
+	if colapseIt > 0:
+		if colapseIt < 1:
+			colapseIt += delta
+			scale = (Vector3(1,1,1)/(1+4*colapseIt))
 		else:
 			parentObject.removeChangelink(self)
 		changelinkAnimation.stop()
@@ -113,8 +113,8 @@ func setTargets(ts:Array):
 	targets = ts
 
 func colapse():
-	if colapse < 0:
-		colapse = 0.01
+	if colapseIt < 0:
+		colapseIt = 0.01
 		parentObject.hitChangelink()
 	
 

@@ -56,7 +56,6 @@ func _process(_delta):
 			yield(get_tree().create_timer(time), "timeout")
 			ponyNames[ponyType].play()
 			delayPonyName = false
-	
 
 
 func _physics_process(delta):
@@ -244,6 +243,7 @@ func _ready():
 	ponyNames.append($PlayerName4)
 	ponyNames.append($PlayerName5)
 	ponyNames.append($PlayerName6)
+	ponyNames.append($PlayerName7)
 
 
 func hidePonyElements():

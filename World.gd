@@ -18,10 +18,12 @@ var TheBOX = preload("res://levels/TheBOX.tscn")
 var levelElements: Array = []
 
 var start = preload("res://levels/start.tscn")
+var end = preload("res://levels/end.tscn")
 var green0 = preload("res://levels/green0.tscn")
 var green1 = preload("res://levels/green1.tscn")
 var green2 = preload("res://levels/green2.tscn")
 var green3 = preload("res://levels/green3.tscn")
+const SEGMENT_LENGTH:int = 20
 var segments:Array = [green0, green1, green2, green3]
 
 func _ready():
@@ -30,9 +32,16 @@ func _ready():
 	resetLevel()
 
 
-func generateRandomSegment(z:float):
-	var object = segments[randi() % len(segments)].instance()
-	object.translate(Vector3(0,0, z))
+var max_level_length:int = 40
+func generateRandomSegment(z:int):
+	if z > max_level_length:
+		return
+	var object 
+	if z == max_level_length:
+		object = end.instance()
+	else:
+		object = segments[randi() % len(segments)].instance()
+	object.translate(Vector3(0, 0, z * SEGMENT_LENGTH))
 	levelContainer.add_child(object)
 	levelElements.append(object)
 
@@ -47,8 +56,8 @@ func generateRandomLevel():
 		levelElements.append(object)
 	var currentElementZ = int((theBOX.transform.origin.z  - 0.48)/ 20)
 	# add level segments
-	while len(levelElements) < currentElementZ + 5:
-		generateRandomSegment(20*len(levelElements))
+	for _i in range(len(levelElements), currentElementZ + 5):
+		generateRandomSegment(len(levelElements))
 	# delete invisible segments
 	currentElementZ -= 2
 	while currentElementZ >= 0 and levelElements[currentElementZ] != null:
@@ -109,14 +118,16 @@ func setCamera():
 		z_max = max(z_max, p.z)
 	var medianx = (x_min + x_max) / 2.0
 	var xspan = abs(x_max - x_min)
-	var yspan = abs(y_max - y_min)
+	#var yspan = abs(y_max - y_min)
 	camera.transform.origin = Vector3(medianx, 2.5 + max(xspan/2.6, y_max-1), z_min-3)
 	if z_min+3 > theBOX.transform.origin.z:
 		theBOX.transform.origin.z =  z_min+3
 		generateRandomLevel()
+	if z_max > max_level_length * SEGMENT_LENGTH:
+		resetLevel()
 
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("ui_select"):
 		resetLevel()
 		
