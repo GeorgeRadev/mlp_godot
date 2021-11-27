@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Pony.gd" type="Script" id=1]
 [ext_resource path="res://pony/MyLittlePony.glb" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://audio/PinkeyPie.ogg" type="AudioStream" id=11]
 [ext_resource path="res://audio/magic.ogg" type="AudioStream" id=12]
 [ext_resource path="res://audio/SunsetShimmer.ogg" type="AudioStream" id=13]
+[ext_resource path="res://audio/Phanfare.ogg" type="AudioStream" id=14]
 
 [sub_resource type="SphereShape" id=1]
 
@@ -60,6 +61,9 @@ stream = ExtResource( 5 )
 [node name="magic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
 
+[node name="boost" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+
 [node name="PlayerName1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 
@@ -82,4 +86,4 @@ stream = ExtResource( 9 )
 stream = ExtResource( 13 )
 
 [node name="Position3D" type="Position3D" parent="."]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.558933, 0.390155, 0 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.25, 0.4, 0 )

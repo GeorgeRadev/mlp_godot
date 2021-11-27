@@ -8,6 +8,7 @@ var jump_speed : float = 6
 var fly_speed : float = 1.5
 var velocity : Vector3 = Vector3()
 var can_move: bool = true
+var boost:float = 1
 
 # all available ponies are here
 var ponyTypeOld : int = -1
@@ -79,7 +80,7 @@ func _physics_process(delta):
 			velocity.x = 1
 		if Input.is_action_pressed(key_prefix +"_right"):
 			velocity.x = -1
-		velocity = velocity.normalized() * speed
+		velocity = velocity.normalized() * speed * boost
 		# restore gravity
 		velocity.y = velocity_y
 	
@@ -111,6 +112,7 @@ func _physics_process(delta):
 			# if has horn or rainbawdash make rainbow
 			if hasHorn or ponyType == 5:
 				var a = splash.instance()
+				a.scale = Vector3(1,1,1) * boost
 				a.start($Position3D.global_transform)
 				get_parent().add_child(a)
 				$magic.play()
@@ -125,7 +127,7 @@ func _physics_process(delta):
 		if push_hold: 
 			playerState = STATE.PUSH
 		if jump_pressed:
-			velocity.y = jump_speed
+			velocity.y = jump_speed * boost
 			playerState = STATE.JUMP
 			audio_jump.play(0)
 
@@ -169,6 +171,14 @@ func action_trampoline(v: Vector3):
 	
 func action_heart():
 	$ching.play()
+
+
+func action_boost():
+	$boost.play()
+	boost = 2
+	yield(get_tree().create_timer(10), "timeout")
+	boost = 1
+
 
 func updateAnimation():
 	if !can_move:
@@ -313,6 +323,7 @@ func showRainbowDash():
 	apply_texture(ponyNodes['eyes'], "res://PonyEyes/eyes_pink.png")
 	ponyNodes['cutiemark'].visible = true
 	ponyNodes['rdhair'].visible = true
+	ponyNodes['rdmane'].visible = true
 	ponyNodes['rdtail'].visible = true
 	ponyNodes['eyelashesup2'].visible = true
 	ponyNodes['eyelashesdown2'].visible = true

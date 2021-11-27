@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="BoxShape" id=5]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.654902, 0.654902, 0.352941, 1 )
+
+[sub_resource type="CubeMesh" id=3]
+material = SubResource( 2 )
+
+[sub_resource type="SpatialMaterial" id=6]
+metallic = 0.06
+roughness = 0.72
+
+[node name="BlockSnow" type="StaticBody"]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.0463939, 0 )
+shape = SubResource( 5 )
+
+[node name="snow" type="MeshInstance" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 6 )

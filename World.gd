@@ -17,14 +17,28 @@ var changelinkClass = preload("res://Changelink.tscn")
 var TheBOX = preload("res://levels/TheBOX.tscn")
 var levelElements: Array = []
 
-var start = preload("res://levels/start.tscn")
-var end = preload("res://levels/end.tscn")
-var green0 = preload("res://levels/green0.tscn")
-var green1 = preload("res://levels/green1.tscn")
-var green2 = preload("res://levels/green2.tscn")
-var green3 = preload("res://levels/green3.tscn")
+
 const SEGMENT_LENGTH:int = 20
-var segments:Array = [green0, green1, green2, green3]
+var Spring:Array = [
+	preload("res://levels/start.tscn"),
+	preload("res://levels/end.tscn"),
+	preload("res://levels/green0.tscn"),
+	preload("res://levels/green1.tscn"),
+	preload("res://levels/green2.tscn"),
+	preload("res://levels/green3.tscn"),
+]
+var Winter:Array = [
+	preload("res://levels/startWinter.tscn"),
+	preload("res://levels/endWinter.tscn"),
+	preload("res://levels/winter0.tscn"),
+	preload("res://levels/winter1.tscn"),
+	preload("res://levels/winter2.tscn"),
+]
+var snowflake = preload("res://levels/snowflake.tscn")
+const SeasonStart:int = 0
+const SeasonEnd:int = 1
+var Seasons:Array = [Spring, Winter]
+var SeasonCurrent:int = 0
 
 func _ready():
 	randomize()
@@ -32,15 +46,16 @@ func _ready():
 	resetLevel()
 
 
-var max_level_length:int = 40
+var max_level_length:int = 30
 func generateRandomSegment(z:int):
 	if z > max_level_length:
 		return
+	var currentSeason:Array = Seasons[SeasonCurrent]
 	var object 
 	if z == max_level_length:
-		object = end.instance()
+		object = currentSeason[SeasonEnd].instance()
 	else:
-		object = segments[randi() % len(segments)].instance()
+		object = currentSeason[SeasonEnd + 1 + randi() % (len(currentSeason) - 2)].instance()
 	object.translate(Vector3(0, 0, z * SEGMENT_LENGTH))
 	levelContainer.add_child(object)
 	levelElements.append(object)
@@ -50,7 +65,7 @@ func generateRandomLevel():
 	var object
 	if len(levelElements) <= 0:
 		#create level start
-		object = start.instance()
+		object = Seasons[SeasonCurrent][SeasonStart].instance()
 		object.translate(Vector3.ZERO)
 		levelContainer.add_child(object)
 		levelElements.append(object)
@@ -80,6 +95,9 @@ func resetLevel():
 	object.translate(Vector3.ZERO)
 	levelContainer.add_child(object)
 	theBOX = object
+	#move to next season
+	SeasonCurrent += 1
+	SeasonCurrent = SeasonCurrent % len(Seasons)
 	#create random level
 	generateRandomLevel()
 	# add players
@@ -123,10 +141,17 @@ func setCamera():
 	if z_min+3 > theBOX.transform.origin.z:
 		theBOX.transform.origin.z =  z_min+3
 		generateRandomLevel()
+	
+	if SeasonCurrent == 1:
+		#generate snow if needed
+		var object = snowflake.instance()
+		object.setZ(z_max)
+		levelContainer.add_child(object)
+	
 	if z_max > max_level_length * SEGMENT_LENGTH:
 		resetLevel()
 
-
+ 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_select"):
 		resetLevel()
