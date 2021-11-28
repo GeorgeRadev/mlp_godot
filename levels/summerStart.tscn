@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://levels/house_suger.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/heart.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/fence.tscn" type="PackedScene" id=3]
+[ext_resource path="res://levels/summerGround.tscn" type="PackedScene" id=4]
+[ext_resource path="res://levels/trampoline.tscn" type="PackedScene" id=5]
+[ext_resource path="res://levels/beach_chair.tscn" type="PackedScene" id=6]
+[ext_resource path="res://levels/apple.tscn" type="PackedScene" id=7]
+[ext_resource path="res://levels/umbrella.tscn" type="PackedScene" id=8]
+[ext_resource path="res://levels/Star.tscn" type="PackedScene" id=12]
+
+[node name="level" type="Spatial"]
+
+[node name="summerGround" parent="." instance=ExtResource( 4 )]
+
+[node name="house" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.854206, 0, 0.519937, 0, 1, 0, -0.519937, 0, 0.854206, 7.71369, -0.075694, 7.44253 )
+
+[node name="Fence" type="Spatial" parent="."]
+
+[node name="Scene Root5" parent="Fence" instance=ExtResource( 3 )]
+transform = Transform( 0.331609, 0, 0.943417, 0, 1, 0, -0.943417, 0, 0.331609, 2.76177, 0, 7.90987 )
+
+[node name="Scene Root8" parent="Fence" instance=ExtResource( 3 )]
+transform = Transform( 0.981166, 0, 0.193165, 0, 1, 0, -0.193165, 0, 0.981166, 4.13132, 0, 6.36843 )
+
+[node name="Scene Root2" parent="Fence" instance=ExtResource( 3 )]
+transform = Transform( 0.904809, 0, 0.425818, 0, 1, 0, -0.425818, 0, 0.904809, 10.1294, 0.0625529, 2.43536 )
+
+[node name="Scene Root6" parent="Fence" instance=ExtResource( 3 )]
+transform = Transform( 0.595682, 0, 0.803221, 0, 1, 0, -0.803221, 0, 0.595682, 3.27103, 0, 6.97881 )
+
+[node name="Scene Root3" parent="Fence" instance=ExtResource( 3 )]
+transform = Transform( 0.738487, 0, 0.674267, 0, 1, 0, -0.674267, 0, 0.738487, 9.24026, 0.0625529, 3.0147 )
+
+[node name="Scene Root4" parent="Fence" instance=ExtResource( 3 )]
+transform = Transform( 0.502998, 0, 0.864287, 0, 1, 0, -0.864287, 0, 0.502998, 8.54597, 0.0625529, 3.82137 )
+
+[node name="Scene Root7" parent="Fence" instance=ExtResource( 3 )]
+transform = Transform( 0.0342415, 0, 0.999414, 0, 1, 0, -0.999414, 0, 0.0342415, 2.53174, 0, 8.94903 )
+
+[node name="Trees" type="Spatial" parent="."]
+
+[node name="BeachChair" parent="Trees" instance=ExtResource( 6 )]
+transform = Transform( 0.41482, 0, 0, 0, 0.41482, 0, 0, 0, 0.41482, -2.57637, 0, 2.66493 )
+
+[node name="Umbrella" parent="Trees" instance=ExtResource( 8 )]
+transform = Transform( 0.162492, 0, 0, 0, 0.162492, 0, 0, 0, 0.162492, -2.62641, -0.291543, 4.77303 )
+
+[node name="items" type="Spatial" parent="."]
+
+[node name="heart2" parent="items" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.3, 8 )
+
+[node name="heart3" parent="items" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.3, 8 )
+
+[node name="apple" parent="items" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78577, 0.178669, 7.95431 )
+
+[node name="apple2" parent="items" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.77061, 0.178669, 7.99844 )
+
+[node name="Trampoline" parent="items" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01141, 0, 6.09704 )
+velocity = Vector3( 16, 16, 0 )
+
+[node name="Star" parent="items" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73952, 0.515956, 7.01368 )
+
+[node name="Star2" parent="items" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82488, 0.515956, 6.65203 )

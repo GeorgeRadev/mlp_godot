@@ -1,11 +1,11 @@
 extends Spatial
 
-var PLAYERS = 2
+var PLAYERS = 1
 
-var players:Array = [null, null, null, null]
-var changelinks:Array = []
-var playersCoordinates:Array = [null, null, null, null]
 var worldZ: float = 0
+var players:Array = []
+var playersCoordinates:Array = []
+var changelinks:Array = []
 
 onready var camera:Camera = $_Camera
 
@@ -20,16 +20,23 @@ var levelElements: Array = []
 
 const SEGMENT_LENGTH:int = 20
 var Spring:Array = [
-	preload("res://levels/start.tscn"),
-	preload("res://levels/end.tscn"),
-	preload("res://levels/green0.tscn"),
-	preload("res://levels/green1.tscn"),
-	preload("res://levels/green2.tscn"),
-	preload("res://levels/green3.tscn"),
+	preload("res://levels/springStart.tscn"),
+	preload("res://levels/springEnd.tscn"),
+	preload("res://levels/spring0.tscn"),
+	preload("res://levels/spring1.tscn"),
+	preload("res://levels/spring2.tscn"),
+	preload("res://levels/spring3.tscn"),
+]
+var Summer:Array = [
+	preload("res://levels/summerStart.tscn"),
+	preload("res://levels/summerEnd.tscn"),
+	preload("res://levels/summer0.tscn"),
+	preload("res://levels/summer1.tscn"),
+	preload("res://levels/summer2.tscn"),
 ]
 var Winter:Array = [
-	preload("res://levels/startWinter.tscn"),
-	preload("res://levels/endWinter.tscn"),
+	preload("res://levels/winterStart.tscn"),
+	preload("res://levels/winterEnd.tscn"),
 	preload("res://levels/winter0.tscn"),
 	preload("res://levels/winter1.tscn"),
 	preload("res://levels/winter2.tscn"),
@@ -37,8 +44,8 @@ var Winter:Array = [
 var snowflake = preload("res://levels/snowflake.tscn")
 const SeasonStart:int = 0
 const SeasonEnd:int = 1
-var Seasons:Array = [Spring, Winter]
-var SeasonCurrent:int = 0
+var Seasons:Array = [ Spring, Summer, Spring, Winter]
+var SeasonCurrent:int = -1
 
 func _ready():
 	randomize()
@@ -46,7 +53,7 @@ func _ready():
 	resetLevel()
 
 
-var max_level_length:int = 30
+var max_level_length:int = 20
 func generateRandomSegment(z:int):
 	if z > max_level_length:
 		return
@@ -101,6 +108,14 @@ func resetLevel():
 	#create random level
 	generateRandomLevel()
 	# add players
+	var arrayTypes:Array=[]
+	if len(players) <= 0:
+		for player in range(PLAYERS):
+			arrayTypes.append(player)
+			playersCoordinates.append(null)
+	else:
+		for player in players:
+			arrayTypes.append(player.ponyType);
 	players.clear()
 	for player in range(PLAYERS):
 		object = ponyClass.instance()
@@ -108,7 +123,7 @@ func resetLevel():
 		players.append(object)
 		object.translate(Vector3( 1.5 - 1*player, 2, 0))
 		object.rotate_y(PI/2)
-		object.ponyType = player
+		object.ponyType = arrayTypes[player]
 		object.key_prefix = "p"+str(player+1)
 	# delete all level elements
 	if oldLevelContainer != null:
@@ -142,7 +157,7 @@ func setCamera():
 		theBOX.transform.origin.z =  z_min+3
 		generateRandomLevel()
 	
-	if SeasonCurrent == 1:
+	if SeasonCurrent == 3:
 		#generate snow if needed
 		var object = snowflake.instance()
 		object.setZ(z_max)
@@ -179,7 +194,7 @@ var changelinkSpawnCount:int = 0
 func addChangelink():
 	var object = changelinkClass.instance()
 	object.setParent(self)
-	object.translate(Vector3( 16 * (randf() -0.5), 3, theBOX.transform.origin.z + 6))
+	object.translate(Vector3( 8 - 16 * randf(), 3, theBOX.transform.origin.z + 6))
 	changelinkSpawnCount += 1
 	if changelinkSpawnCount >= 5:
 		changelinkSpawnCount = 0

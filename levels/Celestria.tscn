@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://items/Celestria.gltf" type="PackedScene" id=1]
+
+[node name="Celestria" instance=ExtResource( 1 )]
+transform = Transform( -0.0996586, 0, -8.71243e-09, 0, 0.0996586, 0, 8.71243e-09, 0, -0.0996586, 0, 0, 0 )
+
+[node name="body" parent="." index="1"]
+transform = Transform( 0.16308, 0, 0, 0, 0, -0.16308, 0, 0.16308, 0, 0, 0, 0 )

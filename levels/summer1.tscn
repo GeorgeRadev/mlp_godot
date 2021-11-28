@@ -1,0 +1,106 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://levels/umbrella.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/beach_chair.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/floater.tscn" type="PackedScene" id=3]
+[ext_resource path="res://levels/spikes.tscn" type="PackedScene" id=4]
+[ext_resource path="res://levels/Star.tscn" type="PackedScene" id=6]
+[ext_resource path="res://levels/palm2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://levels/palm1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://levels/stone.tscn" type="PackedScene" id=9]
+[ext_resource path="res://levels/summerGround.tscn" type="PackedScene" id=10]
+
+[node name="level" type="Spatial"]
+
+[node name="Items" type="Spatial" parent="."]
+
+[node name="Spike2" parent="Items" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.47146, 0.255555, -8.93876 )
+
+[node name="BeachChair" parent="Items" instance=ExtResource( 2 )]
+transform = Transform( 0.41482, 0, 0, 0, 0.41482, 0, 0, 0, 0.41482, 0, 0, -5.0048 )
+
+[node name="BeachChair11" parent="Items" instance=ExtResource( 2 )]
+transform = Transform( 0.41482, 0, 0, 0, 0.41482, 0, 0, 0, 0.41482, 4.88702, 0, -5.0048 )
+
+[node name="BeachChair2" parent="Items" instance=ExtResource( 2 )]
+transform = Transform( 0.41482, 0, 0, 0, 0.41482, 0, 0, 0, 0.41482, 0, 0, -1.10165 )
+
+[node name="BeachChair3" parent="Items" instance=ExtResource( 2 )]
+transform = Transform( -1.81324e-08, 0, -0.41482, 0, 0.41482, 0, 0.41482, 0, -1.81324e-08, 0, 0, -7.76945 )
+
+[node name="BeachChair12" parent="Items" instance=ExtResource( 2 )]
+transform = Transform( -1.81324e-08, 0, -0.41482, 0, 0.41482, 0, 0.41482, 0, -1.81324e-08, 4.51475, 0, -7.76945 )
+
+[node name="BeachChair4" parent="Items" instance=ExtResource( 2 )]
+transform = Transform( 0.41482, 0, 0, 0, 0.41482, 0, 0, 0, 0.41482, 0, 0, 1.909 )
+
+[node name="BeachChair5" parent="Items" instance=ExtResource( 2 )]
+transform = Transform( 0.41482, 0, 0, 0, 0.41482, 0, 0, 0, 0.41482, 4.88749, 0, 0.886029 )
+
+[node name="BeachChair10" parent="Items" instance=ExtResource( 2 )]
+transform = Transform( 0.41482, 0, 0, 0, 0.41482, 0, 0, 0, 0.41482, 4.88749, 0, -0.948807 )
+
+[node name="BeachChair8" parent="Items" instance=ExtResource( 2 )]
+transform = Transform( 0.41482, 0, 0, 0, 0.41482, 0, 0, 0, 0.41482, 0, 0, 1.13728 )
+
+[node name="Umbrella" parent="Items" instance=ExtResource( 1 )]
+transform = Transform( 0.162492, 0, 0, 0, 0.162492, 0, 0, 0, 0.162492, 4.66497, -0.291543, 0 )
+
+[node name="Umbrella2" parent="Items" instance=ExtResource( 1 )]
+transform = Transform( 0.162492, 0, 0, 0, 0.162492, 0, 0, 0, 0.162492, 4.55852, -0.291543, -5.87974 )
+
+[node name="Umbrella3" parent="Items" instance=ExtResource( 1 )]
+transform = Transform( 0.162492, 0, 0, 0, 0.162492, 0, 0, 0, 0.162492, 0, -0.292, 0 )
+
+[node name="Umbrella4" parent="Items" instance=ExtResource( 1 )]
+transform = Transform( 0.162492, 0, 0, 0, 0.162492, 0, 0, 0, 0.162492, 0, -0.291543, -5.89322 )
+
+[node name="Star" parent="Items" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.77428, -6.24508 )
+
+[node name="Star2" parent="Items" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.45204, 1.74234, -6.24508 )
+
+[node name="floater" parent="Items" instance=ExtResource( 3 )]
+transform = Transform( 0.499319, 0, 0, 0, 0.499319, 0, 0, 0, 0.499319, -7.59701, 0, 1.58776 )
+
+[node name="floater2" parent="Items" instance=ExtResource( 3 )]
+transform = Transform( 0.499319, 0, 0, 0, 0.499319, 0, 0, 0, 0.499319, -7.59701, 0, -2.49112 )
+
+[node name="floater3" parent="Items" instance=ExtResource( 3 )]
+transform = Transform( 0.499319, 0, 0, 0, 0.499319, 0, 0, 0, 0.499319, -7.59701, 0, -6.26153 )
+
+[node name="Nature" type="Spatial" parent="."]
+
+[node name="palm1" parent="Nature" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.96786, 0, -9.37081 )
+
+[node name="palm3" parent="Nature" instance=ExtResource( 8 )]
+transform = Transform( 1.56054, 0, 0, 0, 1.56054, 0, 0, 0, 1.56054, 10.3353, 0, 8.57187 )
+
+[node name="palm5" parent="Nature" instance=ExtResource( 8 )]
+transform = Transform( -1.09148, 0.453209, -1.74802, 0.240037, 2.0608, 0.384422, 1.78979, 0, -1.11756, 10.4456, 4.76837e-07, 4.32207 )
+
+[node name="palm6" parent="Nature" instance=ExtResource( 8 )]
+transform = Transform( -1.09148, 0.453209, -1.74802, 0.240037, 2.0608, 0.384422, 1.78979, 0, -1.11756, 9.96525, 4.76837e-07, -6.26644 )
+
+[node name="palm7" parent="Nature" instance=ExtResource( 8 )]
+transform = Transform( -2.05636, -0.041496, 1.50646, -0.0600162, 2.54873, -0.0117187, -1.50584, -0.0449144, -2.05675, 9.52137, 0.0473309, -1.07472 )
+
+[node name="palm2" parent="Nature" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.27865, 0, -6.70331 )
+
+[node name="palm4" parent="Nature" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1.64928, 0, 0, 0, 1, 7.41898, -9.53674e-07, -4.05569 )
+
+[node name="palm8" parent="Nature" instance=ExtResource( 7 )]
+transform = Transform( 0.794582, -0.092468, 0.0188209, 0.0591367, 1.24689, -0.244543, -0.000650666, 0.404512, 0.758092, 7.74956, 0.269907, -1.03591 )
+
+[node name="palm9" parent="Nature" instance=ExtResource( 7 )]
+transform = Transform( 0.762932, 0, -0.522645, 0, 1.99409, 0, 0.522645, 0, 0.762932, 8.8876, 0.269907, 5.1183 )
+
+[node name="stone" parent="Nature" instance=ExtResource( 9 )]
+transform = Transform( 0.00154352, 0.130432, -3.78832, 1.98909, -0.0235387, 0, -0.0322471, -2.72498, -0.0744725, -4.16413, 0, 7.99825 )
+
+[node name="summerGround" parent="." instance=ExtResource( 10 )]

@@ -1,0 +1,115 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://levels/heart.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/cristal.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/trampoline.tscn" type="PackedScene" id=3]
+[ext_resource path="res://levels/spikes.tscn" type="PackedScene" id=4]
+[ext_resource path="res://levels/apple.tscn" type="PackedScene" id=5]
+[ext_resource path="res://levels/Star.tscn" type="PackedScene" id=6]
+[ext_resource path="res://levels/palm2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://levels/palm1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://levels/stone.tscn" type="PackedScene" id=9]
+[ext_resource path="res://levels/summerGround.tscn" type="PackedScene" id=10]
+
+[node name="level" type="Spatial"]
+
+[node name="summerGround" parent="." instance=ExtResource( 10 )]
+
+[node name="Items" type="Spatial" parent="."]
+
+[node name="Cristal" parent="Items" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.36827, 0.0519609, -7.76996 )
+
+[node name="Cristal2" parent="Items" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.91328, -0.482868, 4.59518 )
+
+[node name="Trampoline" parent="Items" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.92218, 0, -7.88867 )
+velocity = Vector3( 0, 14, 0 )
+
+[node name="Trampoline2" parent="Items" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.53217, 0, -7.78144 )
+velocity = Vector3( 0, 11, 0 )
+
+[node name="Spike" parent="Items" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.345307, 0.393175, 2.59724 )
+
+[node name="Spike2" parent="Items" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.47146, -0.741039, -8.93876 )
+
+[node name="apple" parent="Items" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.48407, 0.182669, -4.3325 )
+
+[node name="apple3" parent="Items" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.48407, 0.182669, -3.21447 )
+
+[node name="apple4" parent="Items" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.48407, 0.182669, -1.86911 )
+
+[node name="apple5" parent="Items" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.52181, 0.208277, -0.64881 )
+
+[node name="apple10" parent="Items" instance=ExtResource( 5 )]
+transform = Transform( 2.89012, 0, 0, 0, 2.89012, 0, 0, 0, 2.89012, 3.52594, 0.419921, 2.71444 )
+
+[node name="apple2" parent="Items" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.42834, 0.241858, -5.57586 )
+
+[node name="heart4" parent="Items" instance=ExtResource( 1 )]
+transform = Transform( -0.0733078, 0, -0.997309, 0, 1, 0, 0.997309, 0, -0.0733078, -2.95225, 1.02884, -7.32862 )
+
+[node name="heart5" parent="Items" instance=ExtResource( 1 )]
+transform = Transform( -0.0733078, 0, -0.997309, 0, 1, 0, 0.997309, 0, -0.0733078, -2.95225, 1.56113, -6.66923 )
+
+[node name="heart6" parent="Items" instance=ExtResource( 1 )]
+transform = Transform( -0.0733078, 0, -0.997309, 0, 1, 0, 0.997309, 0, -0.0733078, -2.95225, 2.01512, -5.85425 )
+
+[node name="heart7" parent="Items" instance=ExtResource( 1 )]
+transform = Transform( -0.0733078, 0, -0.997309, 0, 1, 0, 0.997309, 0, -0.0733078, -2.95225, 2.03309, -5.03674 )
+
+[node name="heart12" parent="Items" instance=ExtResource( 1 )]
+transform = Transform( -0.0733078, 0, -0.997309, 0, 1, 0, 0.997309, 0, -0.0733078, -2.95225, 1.6578, -4.24158 )
+
+[node name="heart2" parent="Items" instance=ExtResource( 1 )]
+transform = Transform( -0.109405, 0, -0.993997, 0, 1, 0, 0.993997, 0, -0.109405, -8.32966, -1.16791, -4.8731 )
+
+[node name="heart8" parent="Items" instance=ExtResource( 1 )]
+transform = Transform( -0.109405, 0, -0.993997, 0, 1, 0, 0.993997, 0, -0.109405, -8.32966, -1.16791, -4.31127 )
+
+[node name="heart9" parent="Items" instance=ExtResource( 1 )]
+transform = Transform( -0.109405, 0, -0.993997, 0, 1, 0, 0.993997, 0, -0.109405, -8.32966, -1.16791, -3.71895 )
+
+[node name="heart10" parent="Items" instance=ExtResource( 1 )]
+transform = Transform( -0.109405, 0, -0.993997, 0, 1, 0, 0.993997, 0, -0.109405, -8.32966, -1.16791, -3.06959 )
+
+[node name="heart11" parent="Items" instance=ExtResource( 1 )]
+transform = Transform( -0.109405, 0, -0.993997, 0, 1, 0, 0.993997, 0, -0.109405, -8.32966, -1.16791, -2.33819 )
+
+[node name="Star" parent="Items" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.54157, -0.613257, -5.97644 )
+
+[node name="Nature" type="Spatial" parent="."]
+
+[node name="palm1" parent="Nature" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.96786, 0, -9.37081 )
+
+[node name="palm3" parent="Nature" instance=ExtResource( 8 )]
+transform = Transform( 1.56054, 0, 0, 0, 1.56054, 0, 0, 0, 1.56054, 10.3353, 0, 8.57187 )
+
+[node name="palm5" parent="Nature" instance=ExtResource( 8 )]
+transform = Transform( -1.09148, 0.453209, -1.74802, 0.240037, 2.0608, 0.384422, 1.78979, 0, -1.11756, 10.4456, 4.76837e-07, 4.32207 )
+
+[node name="palm2" parent="Nature" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.27865, 0, -6.70331 )
+
+[node name="stone" parent="Nature" instance=ExtResource( 9 )]
+transform = Transform( 1.33652, -0.908337, 0.257089, -0.504362, -2.05238, -0.708304, 0.320527, 0.558044, -2.18654, 11.2659, 1.55126, -6.43054 )
+
+[node name="stone2" parent="Nature" instance=ExtResource( 9 )]
+transform = Transform( 1.75366, -1.35196, -0.480896, -0.756978, -2.75301, 0.851114, -0.502107, -0.571423, -2.96272, 11.6376, 2.12999, -2.09758 )
+
+[node name="stone5" parent="Nature" instance=ExtResource( 9 )]
+transform = Transform( -0.101904, 0.908525, -0.122198, 3.50963, 0.405982, 3.23326, 2.06338, 0.0417152, -5.54979, 11.4599, 1.55125, 4.44355 )
+
+[node name="palm4" parent="Nature" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.45537, -4.76837e-07, -4.16738 )
