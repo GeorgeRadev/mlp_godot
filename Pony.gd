@@ -55,7 +55,8 @@ func _process(_delta):
 		if ponyType < len(ponyNames):
 			var time = 2*(ponyType) if delayPonyName else 0
 			yield(get_tree().create_timer(time), "timeout")
-			ponyNames[ponyType].play()
+			if ponyType < len(ponyNames):
+				ponyNames[ponyType].play()
 			delayPonyName = false
 
 

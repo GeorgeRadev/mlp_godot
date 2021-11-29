@@ -17,8 +17,8 @@ var changelinkClass = preload("res://Changelink.tscn")
 var TheBOX = preload("res://levels/TheBOX.tscn")
 var levelElements: Array = []
 
-
 const SEGMENT_LENGTH:int = 20
+
 var Spring:Array = [
 	preload("res://levels/springStart.tscn"),
 	preload("res://levels/springEnd.tscn"),
@@ -52,7 +52,7 @@ var Winter:Array = [
 var snowflake = preload("res://levels/snowflake.tscn")
 const SeasonStart:int = 0
 const SeasonEnd:int = 1
-var Seasons:Array = [ Fall, Summer, Spring, Winter]
+var Seasons:Array = [ Spring, Summer, Fall, Winter]
 var SeasonCurrent:int = -1
 
 func _ready():
