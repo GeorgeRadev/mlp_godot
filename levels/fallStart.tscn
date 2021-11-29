@@ -1,0 +1,106 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://levels/heart.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/fence.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/house_suger.tscn" type="PackedScene" id=3]
+[ext_resource path="res://levels/cristal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://levels/trampoline.tscn" type="PackedScene" id=5]
+[ext_resource path="res://levels/spikes.tscn" type="PackedScene" id=6]
+[ext_resource path="res://levels/apple.tscn" type="PackedScene" id=7]
+[ext_resource path="res://levels/treeFall.tscn" type="PackedScene" id=8]
+[ext_resource path="res://levels/stone.tscn" type="PackedScene" id=11]
+[ext_resource path="res://levels/Star.tscn" type="PackedScene" id=12]
+[ext_resource path="res://levels/blockFall.tscn" type="PackedScene" id=13]
+
+[node name="level" type="Spatial"]
+
+[node name="Ground" parent="." instance=ExtResource( 13 )]
+transform = Transform( 40, 0, 0, 0, 1, 0, 0, 0, 20, 0, -0.5, 0 )
+
+[node name="house" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, 0.34202, -6.9216, -0.075695, 3.08982 )
+
+[node name="Fence" type="Spatial" parent="."]
+
+[node name="Scene Root5" parent="Fence" instance=ExtResource( 2 )]
+transform = Transform( 0.331609, 0, 0.943417, 0, 1, 0, -0.943417, 0, 0.331609, 2.76177, 0, 7.90987 )
+
+[node name="Scene Root" parent="Fence" instance=ExtResource( 2 )]
+transform = Transform( -0.063221, 0, -0.998, 0, 1, 0, 0.998, 0, -0.063221, -2.75647, 0, 8.68221 )
+
+[node name="Scene Root8" parent="Fence" instance=ExtResource( 2 )]
+transform = Transform( 0.981166, 0, 0.193165, 0, 1, 0, -0.193165, 0, 0.981166, 4.13132, 0, 6.36843 )
+
+[node name="Scene Root9" parent="Fence" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.31869, 0, 6.3095 )
+
+[node name="Scene Root10" parent="Fence" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4434, 0, 6.3095 )
+
+[node name="Scene Root11" parent="Fence" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.56843, 0, 6.3095 )
+
+[node name="Scene Root12" parent="Fence" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.73512, 0, 6.3095 )
+
+[node name="Scene Root2" parent="Fence" instance=ExtResource( 2 )]
+transform = Transform( 0.624922, 0, -0.780687, 0, 1, 0, 0.780687, 0, 0.624922, -3.12749, 0, 7.69479 )
+
+[node name="Scene Root6" parent="Fence" instance=ExtResource( 2 )]
+transform = Transform( 0.595682, 0, 0.803221, 0, 1, 0, -0.803221, 0, 0.595682, 3.27103, 0, 6.97881 )
+
+[node name="Scene Root3" parent="Fence" instance=ExtResource( 2 )]
+transform = Transform( 0.827779, 0, -0.561054, 0, 1, 0, 0.561054, 0, 0.827779, -3.89806, 0, 6.96509 )
+
+[node name="Scene Root4" parent="Fence" instance=ExtResource( 2 )]
+transform = Transform( 0.957699, 0, -0.287771, 0, 1, 0, 0.287771, 0, 0.957699, -4.8443, 0, 6.47787 )
+
+[node name="Scene Root7" parent="Fence" instance=ExtResource( 2 )]
+transform = Transform( 0.0342415, 0, 0.999414, 0, 1, 0, -0.999414, 0, 0.0342415, 2.53174, 0, 8.94903 )
+
+[node name="Trees" type="Spatial" parent="."]
+
+[node name="stone" parent="Trees" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0894, 0, 1.60508 )
+
+[node name="stone2" parent="Trees" instance=ExtResource( 11 )]
+transform = Transform( 0.0642241, 1.60412, 0, -0.473579, 0.217541, 0, 0, 0, 1.6188, 11.8063, 0.152554, 5.20732 )
+
+[node name="Spatial" parent="Trees" instance=ExtResource( 8 )]
+transform = Transform( 0.358513, 0, 0, 0, 0.358513, 0, 0, 0, 0.358513, 4.60243, 4.76837e-07, 8.38259 )
+
+[node name="Spatial3" parent="Trees" instance=ExtResource( 8 )]
+transform = Transform( 0.273579, 0, 0.385761, 0, 0.472924, 0, -0.385761, 0, 0.273579, 9.62288, 4.76837e-07, 8.38259 )
+
+[node name="Spatial2" parent="Trees" instance=ExtResource( 8 )]
+transform = Transform( 0.100304, 0, 0.344195, 0, 0.358513, 0, -0.344195, 0, 0.100304, -5.08061, 4.76837e-07, 8.37595 )
+
+[node name="items" type="Spatial" parent="."]
+
+[node name="heart2" parent="items" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.3, 8 )
+
+[node name="heart3" parent="items" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.3, 8 )
+
+[node name="apple" parent="items" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78577, 0.178669, 7.95431 )
+
+[node name="apple2" parent="items" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.77061, 0.178669, 7.99844 )
+
+[node name="Cristal" parent="items" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75464, 0, 4.75176 )
+
+[node name="Spike" parent="items" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.614, 0, 2.74 )
+
+[node name="Trampoline" parent="items" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01141, 0, 6.09704 )
+velocity = Vector3( 16, 16, 0 )
+
+[node name="Star" parent="items" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73952, 0.515956, 7.01368 )
+
+[node name="Star2" parent="items" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82488, 0.515956, 6.65203 )

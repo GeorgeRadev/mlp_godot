@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://levels/cristal.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/spikes.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/apple.tscn" type="PackedScene" id=3]
+[ext_resource path="res://levels/blockFall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://levels/treeFall.tscn" type="PackedScene" id=5]
+[ext_resource path="res://levels/stone.tscn" type="PackedScene" id=7]
+
+[node name="level" type="Spatial"]
+
+[node name="BlockSand" parent="." instance=ExtResource( 4 )]
+transform = Transform( 40, 0, 0, 0, 1, 0, 0, 0, 20, 0, -0.5, 0 )
+
+[node name="BlockSand2" parent="." instance=ExtResource( 4 )]
+transform = Transform( -0.368752, -0.382457, 9.23237, 3.33703, -0.875547, -3.49372, 9.41957, 0.295204, 1.59913, -6.38109, -0.372071, -1.34673 )
+
+[node name="BlockSand3" parent="." instance=ExtResource( 4 )]
+transform = Transform( -2.82086, -0.260889, 9.23236, -3.33708, -0.875544, -3.49374, 8.99481, -0.406644, 1.59919, -7.96596, -0.356443, 7.476 )
+
+[node name="BlockSand4" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1.65733, 0.419334, -8.92576, 3.33703, -0.875547, -3.49372, -9.27995, -0.239952, -2.8504, 7.88929, -0.400765, 0.865653 )
+
+[node name="BlockSand5" parent="." instance=ExtResource( 4 )]
+transform = Transform( 4.028, 0.202644, -8.92573, -3.33708, -0.875544, -3.49374, -8.52286, 0.438586, -2.85045, 10.6694, -0.385138, -7.65629 )
+
+[node name="Items" type="Spatial" parent="."]
+
+[node name="apple" parent="Items" instance=ExtResource( 3 )]
+transform = Transform( 1.52116, 0, 0, 0, 1.52116, 0, 0, 0, 1.52116, 1.27182, 0.405559, -4.06453 )
+
+[node name="apple2" parent="Items" instance=ExtResource( 3 )]
+transform = Transform( 1.52116, 0, 0, 0, 1.52116, 0, 0, 0, 1.52116, -3.47866, 0.405559, -6.55233 )
+
+[node name="Spike" parent="Items" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.38183, 0.27186, 3.65903 )
+
+[node name="Cristal" parent="Items" instance=ExtResource( 1 )]
+transform = Transform( -0.268165, 0, 0.963373, 0, 1, 0, -0.963373, 0, -0.268165, 2.43207, 0, 3.00276 )
+
+[node name="Spike3" parent="Items" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.90508, 0.222765, 0.902877 )
+
+[node name="Cristal3" parent="Items" instance=ExtResource( 1 )]
+transform = Transform( 0.3079, 0.0972088, 0.946439, 0.0635074, 0.990448, -0.122389, -0.949296, 0.0977897, 0.298786, -5.19218, 0.183115, 6.92015 )
+
+[node name="Nature" type="Spatial" parent="."]
+
+[node name="stone" parent="Nature" instance=ExtResource( 7 )]
+transform = Transform( 3.82771, 0, 0.892572, 0, 6.91593, 0, -0.590031, 0, 5.79039, -10.1488, 1.2032, -4.9685 )
+
+[node name="stone4" parent="Nature" instance=ExtResource( 7 )]
+transform = Transform( 3.82775, 0, -0.892268, 0, 6.91593, 0, 0.58983, 0, 5.79044, 13.0245, 1.2032, 4.56276 )
+
+[node name="Spatial" parent="Nature" instance=ExtResource( 5 )]
+transform = Transform( 0.358513, 0, 0, 0, 0.358513, 0, 0, 0, 0.358513, -8.13599, 0, 8.88465 )
+
+[node name="Spatial7" parent="Nature" instance=ExtResource( 5 )]
+transform = Transform( 0.321272, 0, 0.15911, 0, 0.358513, 0, -0.15911, 0, 0.321272, -8.00879, 2.16164, 3.12111 )
+
+[node name="Spatial6" parent="Nature" instance=ExtResource( 5 )]
+transform = Transform( 0.290461, 0, 0, 0, 0.290461, 0, 0, 0, 0.290461, -9.24718, 0.972536, 6.31095 )
+
+[node name="Spatial2" parent="Nature" instance=ExtResource( 5 )]
+transform = Transform( 0.358513, 0, 0, 0, 0.358513, 0, 0, 0, 0.358513, -8.11266, 0, -7.78965 )
+
+[node name="Spatial3" parent="Nature" instance=ExtResource( 5 )]
+transform = Transform( 0.358513, 0, 0, 0, 0.358513, 0, 0, 0, 0.358513, 8.14176, 0.210439, -7.31485 )
+
+[node name="Spatial8" parent="Nature" instance=ExtResource( 5 )]
+transform = Transform( 0.269388, 0, 0, 0, 0.269388, 0, 0, 0, 0.269388, 9.27044, 1.85727, -5.11075 )
+
+[node name="Spatial4" parent="Nature" instance=ExtResource( 5 )]
+transform = Transform( 0.256522, -0.0147056, 0.250023, 0.0205188, 0.357925, 0, -0.249614, 0.0143096, 0.256943, 7.94066, 0, 2.54262 )
+
+[node name="Spatial5" parent="Nature" instance=ExtResource( 5 )]
+transform = Transform( 0.0666438, 0, -0.352264, 0, 0.358513, 0, 0.352264, 0, 0.0666438, 8.54748, 0, 8.59345 )

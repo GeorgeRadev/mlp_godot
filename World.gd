@@ -1,6 +1,6 @@
 extends Spatial
 
-var PLAYERS = 1
+var PLAYERS = 2
 
 var worldZ: float = 0
 var players:Array = []
@@ -33,6 +33,14 @@ var Summer:Array = [
 	preload("res://levels/summer0.tscn"),
 	preload("res://levels/summer1.tscn"),
 	preload("res://levels/summer2.tscn"),
+	preload("res://levels/summer3.tscn"),
+]
+var Fall:Array = [
+	preload("res://levels/fallStart.tscn"),
+	preload("res://levels/fallEnd.tscn"),
+	preload("res://levels/fall0.tscn"),
+	preload("res://levels/fall1.tscn"),
+	preload("res://levels/fall2.tscn"),
 ]
 var Winter:Array = [
 	preload("res://levels/winterStart.tscn"),
@@ -44,7 +52,7 @@ var Winter:Array = [
 var snowflake = preload("res://levels/snowflake.tscn")
 const SeasonStart:int = 0
 const SeasonEnd:int = 1
-var Seasons:Array = [ Spring, Summer, Spring, Winter]
+var Seasons:Array = [ Fall, Summer, Spring, Winter]
 var SeasonCurrent:int = -1
 
 func _ready():

@@ -3,6 +3,8 @@
 [sub_resource type="BoxShape" id=1]
 
 [node name="TheBOX" type="StaticBody"]
+collision_layer = 8
+collision_mask = 8
 
 [node name="down" type="CollisionShape" parent="."]
 transform = Transform( 11, 0, 0, 0, 1, 0, 0, 0, 11, 0, -5, 0 )

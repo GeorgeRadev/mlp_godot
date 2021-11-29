@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://levels/heart.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/pinetree.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://levels/trampoline.tscn" type="PackedScene" id=5]
 [ext_resource path="res://levels/spikes.tscn" type="PackedScene" id=6]
 [ext_resource path="res://levels/apple.tscn" type="PackedScene" id=7]
-[ext_resource path="res://levels/palm2.tscn" type="PackedScene" id=9]
 [ext_resource path="res://levels/stone.tscn" type="PackedScene" id=11]
 
 [node name="level" type="Spatial"]
@@ -110,9 +109,6 @@ transform = Transform( 0.0725803, -0.909026, 0.201028, 3.50963, 0.405982, 3.2332
 
 [node name="stone5" parent="Nature" instance=ExtResource( 11 )]
 transform = Transform( -0.101904, 0.908525, -0.122198, 3.50963, 0.405982, 3.23326, 2.06338, 0.0417152, -5.54979, -10.4702, 1.55125, 4.44355 )
-
-[node name="palm4" parent="Nature" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0201, 0, 9.10205 )
 
 [node name="pinetree" parent="Nature" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.50554, 1.75803, -8.79774 )
