@@ -49,7 +49,7 @@ func _physics_process(delta):
 				targetDistance = distance
 				targetVector = vector
 		
-	velocity = targetVector - transform.origin
+	velocity = targetVector - transform.origin + Vector3.DOWN
 	velocity = velocity.normalized() * speed
 	rotation.y = atan2(-velocity.z, velocity.x)
 	
@@ -103,6 +103,10 @@ func showBody(eyes_color:int):
 	var material = SpatialMaterial.new()
 	material.albedo_color = Color(eyes_color)
 	changelinkNodes['eyes'].set_material_override(material)
+	changelinkNodes['Shield'].set_material_override(material)
+	changelinkNodes['Wings'].set_material_override(material)
+	changelinkNodes['Mane'].set_material_override(material)
+	changelinkNodes['Tail'].set_material_override(material)
 
 
 func setParent(parent):
@@ -112,7 +116,7 @@ func setParent(parent):
 func setTargets(ts:Array):
 	targets = ts
 
-func colapse():
+func hit():
 	if colapseIt < 0:
 		colapseIt = 0.01
 		parentObject.hitChangelink()
@@ -120,3 +124,8 @@ func colapse():
 
 func isChangelink():
 	return true
+
+
+func _on_Area_body_entered(body):
+	if body.has_method("action_spike"):
+		body.action_spike()

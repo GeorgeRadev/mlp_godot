@@ -1,5 +1,11 @@
 extends Spatial
 
+
 func _ready():
-	$splash1/AnimationPlayer.get_animation("splash").loop = true
-	$splash1/AnimationPlayer.play("splash", -1, 1.3)
+	$Portal.visible = false
+
+
+func openPortal():
+	$Portal.visible = true
+	$Portal/AnimationPlayer.get_animation("splash").loop = true
+	$Portal/AnimationPlayer.play("splash", -1, 1.3)

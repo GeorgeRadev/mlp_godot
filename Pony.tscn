@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Pony.gd" type="Script" id=1]
 [ext_resource path="res://pony/MyLittlePony.glb" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://audio/magic.ogg" type="AudioStream" id=12]
 [ext_resource path="res://audio/SunsetShimmer.ogg" type="AudioStream" id=13]
 [ext_resource path="res://audio/Phanfare.ogg" type="AudioStream" id=14]
+[ext_resource path="res://audio/Hurts.ogg" type="AudioStream" id=15]
 
 [sub_resource type="SphereShape" id=1]
 
@@ -36,10 +37,10 @@ collision_mask = 15
 script = ExtResource( 1 )
 
 [node name="Pony" parent="." instance=ExtResource( 2 )]
-transform = Transform( -2.18557e-08, 0.5, -2.18557e-08, 0, -2.18557e-08, -0.5, -0.5, -2.18557e-08, 9.55343e-16, -0.804361, 0.295835, 0 )
+transform = Transform( -2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 0.324251, 0, 0, 0, 0.572448, 0, 0, 0, 0.572448, 0, 0.026, 0 )
+transform = Transform( 0.324251, 0, 0, 0, 0.572448, 0, 0, 0, 0.572448, 0, 0.406481, 0 )
 shape = SubResource( 1 )
 
 [node name="cristal" type="MeshInstance" parent="."]
@@ -63,6 +64,9 @@ stream = ExtResource( 12 )
 
 [node name="boost" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
+
+[node name="hurts" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
 
 [node name="PlayerName1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )

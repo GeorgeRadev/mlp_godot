@@ -1,11 +1,13 @@
 extends Spatial
 
 var PLAYERS = 2
+var max_level_length:int = 20
 
 var worldZ: float = 0
 var players:Array = []
 var playersCoordinates:Array = []
 var changelinks:Array = []
+var hasChrysalis:bool = false
 
 onready var camera:Camera = $_Camera
 
@@ -13,6 +15,7 @@ var levelContainer:Spatial = null
 var theBOX:Spatial = null
 var ponyClass = preload("res://Pony.tscn")
 var changelinkClass = preload("res://Changelink.tscn")
+var chrysalisClass = preload("res://Chrysalis.tscn")
 
 var TheBOX = preload("res://levels/TheBOX.tscn")
 var levelElements: Array = []
@@ -61,7 +64,6 @@ func _ready():
 	resetLevel()
 
 
-var max_level_length:int = 20
 func generateRandomSegment(z:int):
 	if z > max_level_length:
 		return
@@ -101,6 +103,7 @@ func generateRandomLevel():
 func resetLevel():
 	var oldLevelContainer = levelContainer
 	levelElements = []
+	hasChrysalis = false
 	# create level object container
 	levelContainer = Spatial.new()
 	add_child(levelContainer)
@@ -161,8 +164,8 @@ func setCamera():
 	var xspan = abs(x_max - x_min)
 	#var yspan = abs(y_max - y_min)
 	camera.transform.origin = Vector3(medianx, 2.5 + max(xspan/2.6, y_max-1), z_min-3)
-	if z_min+3 > theBOX.transform.origin.z:
-		theBOX.transform.origin.z =  z_min+3
+	if z_min + 3 > theBOX.transform.origin.z:
+		theBOX.transform.origin.z = min(z_min + 3, (max_level_length - 0.2) * SEGMENT_LENGTH)
 		generateRandomLevel()
 	
 	if SeasonCurrent == 3:
@@ -171,8 +174,8 @@ func setCamera():
 		object.setZ(z_max)
 		levelContainer.add_child(object)
 	
-	if z_max > max_level_length * SEGMENT_LENGTH:
-		resetLevel()
+	if z_max > (max_level_length - 1) * SEGMENT_LENGTH:
+		addChrysalis()
 
  
 func _process(_delta):
@@ -197,16 +200,25 @@ func _on_Timer_timeout():
 	addChangelink()
 
 
-var changelinkSpawnCount:int = 0
+func addChrysalis():
+	if hasChrysalis:
+		return
+	hasChrysalis = true;
+	var object = chrysalisClass.instance()
+	object.setParent(self)
+	object.translate(Vector3( 0, 2, theBOX.transform.origin.z + 15))
+	object.setTargets(playersCoordinates)
+	add_child(object)
+	changelinks.append(object)
+	$changelink.play()
 
 func addChangelink():
 	var object = changelinkClass.instance()
 	object.setParent(self)
 	object.translate(Vector3( 8 - 16 * randf(), 3, theBOX.transform.origin.z + 6))
-	changelinkSpawnCount += 1
-	if changelinkSpawnCount >= 5:
-		changelinkSpawnCount = 0
+	if randi() % 5 == 0:
 		object.scale = Vector3(2,2,2)
+	object.setTargets(playersCoordinates)
 	add_child(object)
 	changelinks.append(object)
 	$changelink.play()
@@ -220,3 +232,11 @@ func hitChangelink():
 func removeChangelink(changelink):
 	changelinks.remove(changelinks.find(changelink))
 	changelink.queue_free()
+
+
+func endLevel():
+	if len(levelElements)>0:
+		levelElements[len(levelElements)-1].openPortal()
+	$endLevel.play()
+	yield(get_tree().create_timer(5), "timeout")
+	resetLevel()

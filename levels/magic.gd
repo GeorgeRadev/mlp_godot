@@ -21,6 +21,6 @@ func _on_magic_body_entered(body):
 	if body.has_method("isPony"):
 		pass
 	elif body.has_method("isChangelink"):
-		body.colapse()
+		body.hit()
 	elif body is StaticBody:
 		queue_free()

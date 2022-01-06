@@ -14,7 +14,7 @@ var boost:float = 1
 var ponyTypeOld : int = -1
 export var ponyType : int = 0
 var ponyTypes: Array = []
-onready var ponyElements = $Pony/Armature # armature . Skeleton
+onready var ponyElements = $Pony/Armature/Skeleton # armature . Skeleton
 onready var ponyAnimation: AnimationPlayer  =  $Pony/AnimationPlayer
 var ponyNodes: Dictionary = {}
 var hasWings: bool = false
@@ -61,7 +61,6 @@ func _process(_delta):
 
 
 func _physics_process(delta):
-		
 	# falling or gliding
 	if playerState == STATE.GLIDE:
 		velocity += (gravity / 8) * delta
@@ -145,13 +144,19 @@ func _physics_process(delta):
 
 
 func action_spike():
-	velocity *= -1
-	velocity.y = jump_speed
-	can_move = false
+	if not can_move:
+		return
+	$hurts.play()
+	velocity.z = -3
+	velocity.y =  jump_speed
+	can_move = false	
 	yield(get_tree().create_timer(1), "timeout")
 	can_move = true
 
+
 func action_cristal():
+	if not can_move:
+		return
 	velocity *= -1
 	velocity.y = jump_speed
 	can_move = false
@@ -159,17 +164,15 @@ func action_cristal():
 	yield(get_tree().create_timer(0.5), "timeout")
 	velocity *= 0
 	velocity.y = 0
-	yield(get_tree().create_timer(5), "timeout")
-	decristalize()
-	
-func decristalize():
+	yield(get_tree().create_timer(4), "timeout")
 	$cristal.visible = false
 	can_move = true
-	
+
 
 func action_trampoline(v: Vector3):
 	velocity = v
-	
+
+
 func action_heart():
 	$ching.play()
 
@@ -236,6 +239,8 @@ func _ready():
 	ponyTypes.append(funcref(self,"showRainbowDash"))
 	ponyTypes.append(funcref(self,"showSunsetShimmer"))
 	ponyTypes.append(funcref(self,"showTrixy"))
+	ponyTypes.append(funcref(self,"showCelestia"))
+	ponyTypes.append(funcref(self,"showLuna"))
 	ponyTypes.append(funcref(self,"showRandom"))
 	
 	var __ = ponyAnimation.connect("animation_finished", self, "animation_finished")
@@ -262,6 +267,7 @@ func hidePonyElements():
 		child.visible = false
 	$cristal.visible = false
 
+
 func apply_texture(mesh_instance_node, texture_path):
 	var material = SpatialMaterial.new()
 	material.albedo_color = Color(0xffffffff)
@@ -273,22 +279,23 @@ func apply_texture(mesh_instance_node, texture_path):
 	if mesh_instance_node.material_override:
 		mesh_instance_node.material_override.albedo_texture = texture  
 
+
 func showBody(color:int, wings:bool, horn:bool):
 	hidePonyElements()
 	var material = SpatialMaterial.new()
 	material.albedo_color = Color(color)
 	ponyNodes['body'].set_material_override(material)
 	ponyNodes['horn'].set_material_override(material)
-	ponyNodes['wingl 2'].set_material_override(material)
-	ponyNodes['wingr 2'].set_material_override(material)
+	ponyNodes['wingl'].set_material_override(material)
+	ponyNodes['wingr'].set_material_override(material)
 	ponyNodes['body'].visible = true
 	ponyNodes['eyes'].visible = true
 	ponyNodes['teetdown'].visible = true
 	ponyNodes['teethup'].visible = true
 	ponyNodes['tongh'].visible = true
 	if wings:
-		ponyNodes['wingl 2'].visible = true
-		ponyNodes['wingr 2'].visible = true
+		ponyNodes['wingl'].visible = true
+		ponyNodes['wingr'].visible = true
 	hasWings = wings
 	if horn:
 		ponyNodes['horn'].visible = true
@@ -305,7 +312,8 @@ func showTwilightSparkle():
 	ponyNodes['tsmane'].visible = true
 	ponyNodes['tstail'].visible = true
 	ponyNodes['eyelashesup1'].visible = true
-	
+
+
 func showPinkeyPie():
 	magicColor = 0xf4c4dcff
 	showBody(magicColor, false, false)
@@ -316,6 +324,7 @@ func showPinkeyPie():
 	ponyNodes['pptail'].visible = true
 	ponyNodes['eyelashesup1'].visible = true
 	ponyNodes['eyelashesdown1'].visible = true
+
 
 func showRainbowDash():
 	magicColor = 0x98e2ffff
@@ -329,6 +338,7 @@ func showRainbowDash():
 	ponyNodes['eyelashesup2'].visible = true
 	ponyNodes['eyelashesdown2'].visible = true
 
+
 func showAppleJack():
 	magicColor = 0xffc360ff
 	showBody(magicColor, false, false)
@@ -341,6 +351,7 @@ func showAppleJack():
 	ponyNodes['eyelashesup1'].visible = true
 	ponyNodes['eyelashesdown1'].visible = true
 
+
 func showFlutterShy():
 	magicColor = 0xfff4a3ff
 	showBody(magicColor, true, false)
@@ -352,6 +363,7 @@ func showFlutterShy():
 	ponyNodes['fstail'].visible = true
 	ponyNodes['eyelashesdown1'].visible = true
 	ponyNodes['eyelashesdown2'].visible = true
+
 
 func showRarity():
 	magicColor = 0xecf0f4ff
@@ -367,6 +379,7 @@ func showRarity():
 	ponyNodes['eyelashesdown1'].visible = true
 	ponyNodes['eyelashesdown2'].visible = true
 
+
 func showSunsetShimmer():
 	magicColor = 0xf89f2bff
 	showBody(magicColor, false, true)
@@ -379,19 +392,41 @@ func showSunsetShimmer():
 	ponyNodes['eyelashesup2'].visible = true
 	ponyNodes['eyelashesdown2'].visible = true
 
+
 func showTrixy():
 	magicColor = 0x55acf3ff
 	showBody(magicColor, false, true)
 	apply_texture(ponyNodes['cutiemark'], "res://PonyCutieMarks/cutie_trixie.png")
 	ponyNodes['cutiemark'].visible = true
 	ponyNodes['tcoin'].visible = true
-	ponyNodes['that'].visible = false
-	ponyNodes['tkape'].visible = true
+	#ponyNodes['that'].visible = false
+	#ponyNodes['tkape'].visible = true
 	ponyNodes['thair'].visible = true
 	ponyNodes['tmane'].visible = true
 	ponyNodes['ttail'].visible = true
 	ponyNodes['eyelashesup1'].visible = true
 	ponyNodes['eyelashesdown1'].visible = true
+
+
+func showCelestia():
+	hidePonyElements()
+	hasWings = true
+	hasHorn = true
+	ponyNodes['psbody'].visible = true
+	ponyNodes['pshair'].visible = true
+	ponyNodes['psmane'].visible = true
+	ponyNodes['pstail'].visible = true
+
+
+func showLuna():
+	hidePonyElements()
+	hasWings = true
+	hasHorn = true
+	ponyNodes['plbody'].visible = true
+	ponyNodes['plmane'].visible = true
+	ponyNodes['pltail'].visible = true
+	ponyNodes['plwings'].visible = true
+
 
 func showRandom():
 	ponyNodes['cutiemark'].visible = false
